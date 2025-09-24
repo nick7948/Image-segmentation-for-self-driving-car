@@ -1,0 +1,112 @@
+{
+  "info": {
+    "name": "Image Segmentation API",
+    "description": "REST API for Image Segmentation for Self-Driving Cars",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12345678"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API service is healthy and the model is loaded"
+      },
+      "response": []
+    },
+    {
+      "name": "API Information",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        },
+        "description": "Get information about available API endpoints"
+      },
+      "response": []
+    },
+    {
+      "name": "Model Information",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/model/info",
+          "host": ["{{base_url}}"],
+          "path": ["model", "info"]
+        },
+        "description": "Get details about the loaded U-Net model"
+      },
+      "response": []
+    },
+    {
+      "name": "Image Segmentation - File Upload",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": "",
+              "description": "Upload an image file (JPG, PNG, etc.)"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "host": ["{{base_url}}"],
+          "path": ["predict"]
+        },
+        "description": "Perform image segmentation on uploaded image file"
+      },
+      "response": []
+    },
+    {
+      "name": "Image Segmentation - Base64 JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"image\": \"<base64_encoded_image_data>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "host": ["{{base_url}}"],
+          "path": ["predict"]
+        },
+        "description": "Perform image segmentation using base64-encoded image data"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "description": "Base URL for the Image Segmentation API"
+    }
+  ]
+}
