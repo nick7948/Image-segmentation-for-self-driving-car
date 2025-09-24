@@ -1,0 +1,1 @@
+"""API module for image segmentation service."""
